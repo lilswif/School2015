@@ -1,0 +1,8 @@
+# roles/wordpress/tasks/main.yml
+---
+
+- include: install.yml
+- include: config.yml
+- include: plugins.yml
+- include: themes.yml
+

@@ -1,0 +1,17 @@
+---
+galaxy_info:
+  author: Bert Van Vreckem
+  description: Installs Wordpress on CentOS/RHEL 7
+  company:
+  license: BSD
+  min_ansible_version: 1.7
+  platforms:
+  - name: EL
+    versions:
+      - 7
+  categories:
+    - web
+dependencies:
+  - bertvv.httpd
+  - bertvv.mariadb
+version: 1.1.2

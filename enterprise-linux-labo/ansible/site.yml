@@ -1,0 +1,33 @@
+# site.yml
+---
+- hosts: pu004
+  sudo: true
+  roles: 
+    - bertvv.el7
+    - bertvv.httpd
+    - bertvv.mariadb
+    - bertvv.wordpress
+    - phpmyadmin
+- hosts: pu001
+  sudo: true
+  roles: 
+    - bertvv.el7
+    - bertvv.httpd
+    - bertvv.bind
+- hosts: pu002
+  sudo: true
+  roles: 
+    - bertvv.el7
+    - bertvv.httpd
+    - bertvv.bind
+- hosts: pr011
+  sudo: true
+  roles: 
+    - bertvv.el7
+    - bertvv.samba
+    - vsftpd
+- hosts: pr001
+  sudo: true
+  roles: 
+    - bertvv.el7
+    - bertvv.dhcp

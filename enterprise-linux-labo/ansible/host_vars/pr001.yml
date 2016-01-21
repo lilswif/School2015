@@ -1,0 +1,25 @@
+# host_vars/lampstack.yml
+---
+el7_repositories:
+  - epel-release
+el7_firewall_allow_services:
+  - http
+  - https
+  - dns
+  - dhcp
+dhcp_global_default_lease_time: 43200 
+dhcp_global_max_lease_time: 43200
+dhcp_global_subnet_mask: 255.255.0.0
+dhcp_global_domain_name: linuxlab
+dhcp_global_broadcast_address: 172.16.255.255
+dhcp_global_router: 172.16.255.254
+dhcp_global_domain_name_servers:
+  - 192.0.2.10
+  - 192.0.2.11
+dhcp_subnets:
+  - ip: 172.16.0.0
+    netmask: 255.255.0.0
+    range_begin: 172.16.100.1
+    range_end: 172.16.255.253
+    default_lease_time: 43200
+    routers: 172.16.255.254

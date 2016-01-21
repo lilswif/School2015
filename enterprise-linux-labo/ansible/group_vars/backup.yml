@@ -1,0 +1,89 @@
+# group_vars/all.yml
+# Variables visible to all nodes
+---
+el7_user_groups:
+  - directie
+  - staf
+  - financieringen
+  - verzekeringen
+  - beheer
+  - publiek
+
+
+el7_users:
+  - name: franka
+    comment: 'Frank Assengraaf'
+    password: franka
+    shell: /sbin/nologin
+    groups:
+      - directie
+      - staf
+      - financieringen
+      - verzekeringen
+  - name: femkevdv
+    comment: 'Femke Van de Vorst'
+    shell: /sbin/nologin
+    groups:
+      - staf
+    password: femkevdv
+  - name: hansb
+    comment: 'Hans Berghuis'
+    shell: /sbin/nologin
+    groups:
+      - verzekeringen
+    password: hansb
+  - name: kimberlyvh
+    comment: 'Kimberly Van Herk'
+    shell: /sbin/nologin
+    groups:
+      - verzekeringen
+    password: kimberlyvh
+  - name: taniav
+    comment: 'Tania Versantvoort'
+    shell: /sbin/nologin
+    groups:
+      - verzekeringen
+    password: taniav
+  - name: peterj
+    comment: 'Peter Jongsma'
+    shell: /sbin/nologin
+    groups:
+      - financieringen
+    password: peterj
+    
+  - name: maaiked
+    comment: 'Maaike Doorn'
+    groups:
+      - directie
+      - staf
+      - financieringen
+      - verzekeringen
+      - beheer
+    password: maaiked
+
+  - name: fred
+    comment: Administrator
+    password: fred
+    groups: 
+      - wheel
+      - directie
+      - staf
+      - financieringen
+      - verzekeringen
+      - beheer
+
+el7_admin_user: fred
+el7_motd: TRUE
+el7_repositories:
+  - epel-release
+el7_install_packages:
+  - tree
+  - bash-completion
+  - git
+  - nano
+  - bind-utils
+  - tree
+  - vim-enhanced
+  - wget
+  - tar
+el7_admin_ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCVzfhfwybUtQnB36noi3aVG5iBM9AXR04SlLTkxykNaCnGGK+/J2dHyUC6z2jGBEnXWX5++s1mRyJT4WfV08Er9Us8uflm2iYjraw8imNNsxfzEzSmxEZBHgaGapS70Hvpi4x4SIq8O2LDwgw/BgP+9LnWB/JBhFqtJxzY5g+9gbSgKbTIhP1vSvBLHKGsLWsAMo+DNZrt4oRuSlyRp5LXlRqXieC16Yt7uBkrfjZepWzZfewbHVTrUyaGax4LcdF4JHCwbmQgT9rJhIFOhznGTuoN7DgHbwkA5RTSqgjHApmsM1ok2OR6mXM6bfYLrfL1oKtY4Ytkk4nyo4n/dOdJiL+vT0+svmujuSbb/5cyJvPmpMixDxxQXxoM7YPmwCNPyqUhNYITD5MNnWi8rfye6OLY0LZY7Rao+PxpZkqseyZR/crHJ+nEnAidLNsnDep+mqeVxpHEStPxOFKUN8e8KltFWBIxWmW+rEY2cMnPr3tbkoRJuvYOJaVgDo7TZ5pIf0bbaTRcpqV9fwaLpsaUQA2T+/WRrwDQO+WWBtoQsjK5YwVdSL9cpEIU/Oh9ZWLte2z1sCvz4Gn7VU/6sv+RwwCfqviSCLQRytaBRaroTHDMataCPxz+tdr4hgEp6jT7ERWjYu9gq+263rDjGhTh6IKZGxkQlb+Q/H564CBABQ== frederik.vanbrussel.r5763@student.hogent.be'

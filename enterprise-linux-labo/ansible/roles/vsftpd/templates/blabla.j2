@@ -1,0 +1,31 @@
+# Vsftpd configuration
+# {{ ansible_managed }}
+
+# Anonymous login
+anonymous_enable={{ ftp_anonymous_enable|default('YES') }}
+{% if ftp_anon_root is defined %}
+anon_root={{ ftp_anon_root }}
+{% endif %}
+
+# Registered user access
+local_enable={{ ftp_local_enable|default('YES') }}
+{% if ftp_local_root is defined %}
+local_root={{ ftp_local_root }}
+{% endif %}
+local_umask={{ ftp_local_umask|default('022') }}
+userlist_deny=YES
+
+write_enable={{ ftp_write_enable|default('YES') }}
+
+# Server port settings
+connect_from_port_20=YES
+listen={{ ftp_listen|default('YES') }}
+listen_ipv6={{ ftp_listen_ipv6|default('NO') }}
+
+pam_service_name=vsftpd
+
+{% if ftp_config is defined %}
+{% for key, value in ftp_config.iteritems() %}
+{{ key }}={{ value }}
+{% endfor %}
+{% endif %}

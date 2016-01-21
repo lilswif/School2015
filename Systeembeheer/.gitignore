@@ -1,0 +1,11 @@
+# Editor backup files
+.*~
+*~
+
+# Big artefacts
+*.iso
+*.box
+*.ova
+*.vmdk
+
+/home/fred/Githubs/Systeembeheer/Linux/Stacks/.vagrant/

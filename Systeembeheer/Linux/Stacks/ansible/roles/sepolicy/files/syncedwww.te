@@ -1,0 +1,19 @@
+# SELinux policy that allows HTTP to access /var/www/html when
+# it is a synced folder in VirtualBox pointing to a directory on the
+# host system
+
+module syncedwww 1.0;
+
+require {
+  type httpd_t;
+  type vmblock_t;
+  class file { read getattr open };
+  class dir { getattr search };
+}
+
+#============= httpd_t ==============
+
+allow httpd_t vmblock_t:dir { getattr search };
+
+allow httpd_t vmblock_t:file { read getattr open };
+

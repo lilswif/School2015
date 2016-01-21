@@ -1,0 +1,10 @@
+# Ansible role dependencies
+---
+
+- src: bertvv.el7
+- src: bertvv.httpd
+- src: bertvv.mariadb
+- src: bertvv.wordpress
+- src: bertvv.bind
+- src: bertvv.samba
+- src: bertvv.dhcp

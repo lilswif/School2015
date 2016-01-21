@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Test results load monitoring group 5">
+
+    <title>Test Results Siege</title>
+
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">  
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="../css/layouts/side-menu.css">
+    <!--<![endif]-->    
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="../js/eigenjs.js"></script>
+
+</head>
+<body>
+<div id="layout">
+    <!-- Menu toggle -->
+    <a href="#menu" id="menuLink" class="menu-link">
+        <!-- Hamburger icon -->
+        <span></span>
+    </a>
+
+    <div id="menu">
+        <div class="pure-menu">
+            <a class="pure-menu-heading" href="../index.html">YOMoni</a>
+
+            <ul class="pure-menu-list">
+                    <div class="active" id="active">
+                            <!-- menu dynamisch aangevuld -->
+                    </div>
+            </ul>
+        </div>
+    </div>
+
+    <div id="main">
+        <div class="header">
+            <h1>$title</h1>
+        </div>
+
+        <div class="content">
+            <h2 class="content-subhead">Testomgeving</h2>
+            <p>
+                Uitleg over de test-omgeving
+            </p>
+
+            <h2 class="content-subhead">Overview</h2>
+            <!-- start splitspunt -->         <div class='pure-g'>
+        <div class='pure-u-1-2'>
+             <table class='pure-table pure-table-horizontal'>
+             <tbody>
+               <tr><td> Total tests ran </td><td>-</td><td> 8 </td></tr>
+               <tr><Td> Tests ran for each concurring user </td><td>-</td><td> 2 </td></Th>
+               <tr><td> time for each test</td><td>-</td><td> 5S </td></tr>
+               <tr><td> delay </td><td>-</td><td> 1 </td></tr>
+           </tbody>
+           </table>
+           
+           </div>
+           <div class='pure-u-1-2'>
+           <table style='display: none;' id='failorsuc'>
+           <thead>
+           <th> succesfull </th> <th> failure </th>
+   </thead>
+   <tbody>
+       <tr>
+           <th>Succesfull</th>
+           <td>0</td>
+        </tr><tr>
+         <th>failures</th>
+           <td>0</td>
+       </tr>
+   </tbody>
+   </table>
+           <div id='failsucces' style='min-width: 310px; height: 200px; max-width: 500px; margin: 0 auto'></div>
+
+           </div>
+           </div>        
+           <h2 class='content-subhead'>ResultatenTabel</h2>
+           <p>
+               Elke waarde is het gemiddelde.
+           </p>
+<table id='datatable' class='pure-table pure-table-horizontal'>
+ <thead>
+  <tr>
+   <th> Conc. users </th>
+   <th> Transactions </th>
+   <th> Elapsed Time </th>
+   <th> Response Time </th>
+   <th> Transaction Rate </th>
+   <th> Succesful Transactions </th>
+   <th> Failed Transactions </th>
+  </tr>
+ </thead>
+ <tbody>
+<tr>
+    <th> 7 </th> 
+    <td> 0 </td>
+    <td> 4.905 </td>
+    <td> nan </td>
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+<tr>
+    <th> 8 </th> 
+    <td> 0 </td>
+    <td> 4.93 </td>
+    <td> nan </td>
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+<tr>
+    <th> 9 </th> 
+    <td> 0 </td>
+    <td> 4.95 </td>
+    <td> nan </td>
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+<tr>
+    <th> 10 </th> 
+    <td> 0 </td>
+    <td> 4.95 </td>
+    <td> nan </td>
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+</tbody>
+</table>
+
+<table style='display: none;' id='transdata'>
+    <thead>
+        <tr>
+            <th> Conc. users </th>
+            <th> Transactions </th>
+            <th> Succesful Transactions </th>
+            <th> Failed Transactions </th>
+        </tr>
+    </thead>
+    <tbody>
+<tr>
+    <th> 7 </th> 
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+<tr>
+    <th> 8 </th> 
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+<tr>
+    <th> 9 </th> 
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+<tr>
+    <th> 10 </th> 
+    <td> 0 </td>
+    <td> 0 </td>
+    <td> 0 </td>
+</tr>
+</tbody></table>
+            <h2 class="content-subhead">Grafieken</h2>
+            
+        
+        <div id="responsetime" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+        <br><br>
+        <div id="translijntje" style="min-width: 400px; height: 400px; margin: 0 auto"></div>  
+        <br><br>
+        <div id="transactionrate" style="min-width: 400px; height: 400px; margin: 0 auto"></div> 
+        <br><br>
+        <div id="elapsedtime" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+         
+
+            <h2 class="content-subhead">Conclusie</h2>
+            <p>
+                ...
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

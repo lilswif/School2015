@@ -1,0 +1,27 @@
+# roles/ftp/tasks/main.yml
+---
+
+- name: Installing ftp packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - vsftpd
+  tags: vsftpd
+
+- name: Copy & configure .conf-files
+  template:
+    src=vsftpd.conf.j2
+    dest=/etc/vsftpd/vsftpd.conf
+  notify: restart vsftpd
+  tags: vsftpd
+
+- name: SELinux Settings
+  seboolean: name={{ item }}  state=yes persistent=yes
+  with_items:
+    - ftp_home_dir
+    #- ftpd_use_cifs
+    - ftpd_full_access
+
+- name: start the ftp service
+  service: name=vsftpd state=started enabled=true
+  tags: vsftpd
+

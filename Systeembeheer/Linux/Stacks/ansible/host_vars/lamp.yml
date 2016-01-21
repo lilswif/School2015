@@ -1,0 +1,38 @@
+# host_vars/lampstack.yml
+---
+
+el7_repositories:
+  - epel-release
+
+el7_install_packages:
+  - bash-completion
+  - policycoreutils
+  - setroubleshoot-server
+  - tree
+  - vim-enhanced
+
+el7_firewall_allow_services:
+  - http
+  - https
+
+httpd_scripting: 'php'
+
+mariadb_databases:
+  - wordpress
+
+mariadb_users:
+  - name: admin
+    password: admin
+    priv: 'wordpress.*:ALL'
+
+mariadb_root_password: admin
+
+wordpress_database: wordpress
+wordpress_user: admin
+wordpress_password: admin
+mariadb_init_scripts:
+  - database: wordpress
+    script: files/init.sql
+
+el7_firewall_allow_ports:
+  - 25826/udp

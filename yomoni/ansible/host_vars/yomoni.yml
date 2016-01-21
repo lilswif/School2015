@@ -1,0 +1,27 @@
+# host_vars/lampstack.yml
+---
+
+el7_repositories:
+  - epel-release
+
+el7_install_packages:
+  - bash-completion
+  - policycoreutils
+  - setroubleshoot-server
+  - tree
+  - vim-enhanced
+
+el7_firewall_allow_services:
+  - http
+  - https
+  - ssh
+
+el7_firewall_allow_ports:
+  - 25826/udp
+
+el7_user_groups:
+  - wheel
+
+siege_targets:
+  - 192.168.56.77/wordpress 
+

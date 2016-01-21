@@ -1,0 +1,14 @@
+# roles/phpmyadmin/tasks/main.yml
+---
+
+- name: Install PHPMyAdmin
+  yum:
+    pkg: phpMyAdmin
+    state: installed
+  tags: phpmyadmin
+
+- name: Install config file
+  copy:
+    src: etc_httpd_conf.d_phpMyAdmin.conf
+    dest: /etc/httpd/conf.d/phpMyAdmin.conf
+  tags: phpmyadmin

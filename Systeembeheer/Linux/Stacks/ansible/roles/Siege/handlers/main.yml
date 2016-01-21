@@ -1,0 +1,7 @@
+# roles/ROLENAME/handlers/main.yml
+---
+
+#- name: restart ROLENAME
+#  service:
+#    name: ROLENAMEd
+#    state: restarted

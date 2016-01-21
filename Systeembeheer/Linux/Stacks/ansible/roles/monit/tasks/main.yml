@@ -1,0 +1,19 @@
+# roles/ROLENAME/tasks/main.yml
+---
+
+- name: install the latest version of Monit
+  yum: name=monit state=latest
+
+- name: copy monitrc to dashboard
+  copy:
+    src: monitrc
+    dest: /etc/
+
+- name: Configure and complete the installation process
+  command: sudo {{ item }} 
+  with_items:
+    - firewall-cmd --add-port=2812/tcp --permanent
+    - systemctl restart firewalld
+    - service monit start
+    - monit
+

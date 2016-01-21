@@ -1,0 +1,9 @@
+# site.yml
+---
+- hosts: yomoni
+  sudo: true
+  roles:
+    - bertvv.el7
+    - bertvv.httpd
+    - Siege
+    

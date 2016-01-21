@@ -1,0 +1,135 @@
+# host_vars/pr0011.yml
+# Variables visible to all nodes
+---
+el7_firewall_allow_ports:
+  - 21/tcp
+  - 20/tcp
+el7_firewall_allow_services:
+  - ftp
+
+el7_user_groups:
+  - directie
+  - verzekeringen
+  - financieringen
+  - beheer
+  - staf
+  - users
+
+el7_users:
+  - name: franka
+    password: '$6$uuiJF.ZFlneKhWrd$SR/DKlfIKNDm0dh/25o1F0Uv1AQWyuFz3EennF3mevt05VQ4b7v4/7SzlxRW6qbkNCU2EIXpEHmVJKnJlT/CH1'
+    comment: 'Frank Assengraaf'
+    groups:
+       - directie
+       - verzekeringen
+       - financieringen
+       - staf
+       - users
+    shell: /sbin/nologin
+  - name: femkevdv
+    password: $6$rounds=5000$m8VGNLiwJ5iuShZR$C0gVzGEv/wLLTuB6GTEFFVs2ltEtT5I9vyR53oIvQBISoUrmr9yACk2VxWmtkgegf5V5fIiNso0GKHERUBn/N/
+    comment: 'Femke Van de Vorst'
+    groups:
+       - staf
+       - users
+    shell: /sbin/nologin
+  - name: hansb
+    password: $6$rounds=5000$V2yaWCfDyuTyH9tA$RvQwaKt.qAwLX1fUoxz0JLvRx1AzD5hGeaaGdhyJ7oG9FLYUOw3d5FQP0IsTQpeVTJGJJFB8sOEvbvLkPjO63/
+    comment: 'Hans Berghuis'
+    groups:
+       - verzekeringen
+       - users
+    shell: /sbin/nologin
+  - name: peterj
+    password: $6$rounds=5000$LnJ886SwVnncmbGE$Hy82pGvCVZ3dbIENGxwbY4CI/GPl96nNxLrgW1WARfveka/pjbJQ3LIvXAOoorCG1hLqV1WXaj7ygjmRB51ID.
+    comment: 'Peter Jongsma'
+    groups:
+       - financieringen
+       - users
+    shell: /sbin/nologin
+  - name: kimberlyvh
+    password: $6$rounds=5000$/3I84mpLMc6fheeN$Gs98tQh3vDeLVZPYueYotcJG9LgdncOEJ5q0D9T3W0Pcn8on/Hqb32.qUECzGbYDErec2ipAk6kSnv5a8lQRb.
+    comment: 'Kimberly Van Herk'
+    groups:
+       - verzekeringen
+       - users
+    shell: /sbin/nologin
+  - name: taniav
+    password: $6$rounds=5000$uY.vPZeDpF0vOzFn$vU1MO/BnVhVXj1rNe.Psq2kmxk5LdLXiVO36RQraOlUlTrLd/uCQIhr9Gz/DMKuYtk.Ivih8Bx86MNDZOwxUS0
+    comment: 'Tania Versantvoort'
+    groups:
+       - verzekeringen
+       - users
+    shell: /sbin/nologin
+  - name: maaiked
+    password: $6$rounds=5000$kmcPI8VDxcg.ABlz$H4VIFXg.RzQs9WmjVNkB.6kiH23exK8pWNMDjLmBmTG0T54EHJTCIp9dgD.r4cXVLnMPnedueEvZuRUTmyYzm/
+    comment: 'Maaike Doorn'
+    groups:
+       - directie
+       - verzekeringen
+       - financieringen
+       - staf
+       - beheer
+       - users
+  - name: fred
+    password: $6$rounds=5000$qTkp4agt8NpOLzvZ$aY19VIGytdC/1wdBsTRWmqweMAKrQJf6u49/GimR2Vsidbd9mjM6KxxvzyBCvzURVwQFY8sUxhLf539msiV0P/
+    comment: Administrator
+    groups:
+       - wheel
+       - directie
+       - verzekeringen
+       - financieringen
+       - staf
+       - beheer
+       - users
+
+samba_netbios_name: FILES
+samba_workgroup: LINUXLAB
+samba_load_homes: true
+
+samba_users:
+  - name: franka
+    password: franka
+  - name: femkevdv
+    password: femkevdv
+  - name: hansb
+    password: hansb
+  - name: peterj
+    password: peterj
+  - name: kimberlyvh
+    password: kimberlyvh
+  - name: taniav
+    password: taniav
+  - name: maaiked
+    password: maaiked
+  - name: fred
+    password: fred
+    
+samba_shares:
+  - name: directie
+    group: directie
+    write_list: +directie, femkevdv
+    valid_users: +directie, femkevdv
+  - name: financieringen
+    group: financieringen
+    write_list: +financieringen
+  - name: staf
+    group: staf
+    write_list: +staf
+  - name: verzekeringen
+    group: verzekeringen
+    write_list: +verzekeringen
+  - name: publiek
+    public: yes
+    write_list: +users
+    group: users
+    setype: public_content_t
+  - name: beheer
+    group: beheer
+    write_list: +beheer
+    valid_users: +beheer
+    directory_mode: 770
+  - name: homes
+    group: users
+    write_list: +users
+    valid_users: +users

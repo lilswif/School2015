@@ -1,0 +1,40 @@
+# roles/sepolicy/tasks/main.yml
+# Install an SELinux policy on the server
+---
+
+- name: Check whether policy is already installed
+  stat:
+    path: /etc/selinux/targeted/modules/active/modules/syncedwww.pp
+  register: policy
+  tags: sepolicy
+
+- name: Put the policy definition on the server
+  copy:
+    src: syncedwww.te
+    dest: /tmp/syncedwww.te
+  register: copypolicy
+  tags: sepolicy
+
+- name: Compile module (step 1)
+  command: checkmodule -M -m -o /tmp/syncedwww.mod /tmp/syncedwww.te
+  when: copypolicy|changed
+  tags: sepolicy
+
+- name: Compile module (step 2)
+  command: semodule_package -o /tmp/syncedwww.pp -m /tmp/syncedwww.mod
+  when: copypolicy|changed
+  tags: sepolicy
+
+- name: Install compiled policy
+  command: semodule -i /tmp/syncedwww.pp
+  when: copypolicy|changed
+  tags: sepolicy
+
+- name: Remove artefacts
+  file:
+    path: /tmp/syncedwww.{{ item }}
+    state: absent
+  with_items:
+    - mod
+    - pp
+  tags: sepolicy

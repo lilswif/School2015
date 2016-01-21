@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+  <VirtualNetworkConfiguration>
+    <Dns>
+      <DnsServers>
+        <DnsServer name="mvps-adc-03" IPAddress="10.10.10.3" />
+        <DnsServer name="mvps-dc-02.msmvps.ca" IPAddress="172.16.10.1" />
+        <DnsServer name="mvps-dc-03" IPAddress="172.16.10.3" />
+      </DnsServers>
+    </Dns>
+    <VirtualNetworkSites>
+      <VirtualNetworkSite name="mvps-VirtualNetwork" Location="West US">
+        <AddressSpace>
+          <AddressPrefix>10.0.0.0/8</AddressPrefix>
+        </AddressSpace>
+        <Subnets>
+          <Subnet name="Subnet-1">
+            <AddressPrefix>10.0.0.0/11</AddressPrefix>
+          </Subnet>
+          <Subnet name="GatewaySubnet">
+            <AddressPrefix>10.32.0.0/29</AddressPrefix>
+          </Subnet>
+        </Subnets>
+        <DnsServersRef>
+          <DnsServerRef name="mvps-dc-02.msmvps.ca" />
+          <DnsServerRef name="mvps-adc-03" />
+        </DnsServersRef>
+        <Gateway>
+          <VPNClientAddressPool>
+            <AddressPrefix>172.16.10.0/24</AddressPrefix>
+          </VPNClientAddressPool>
+          <ConnectionsToLocalNetwork />
+        </Gateway>
+      </VirtualNetworkSite>
+    </VirtualNetworkSites>
+  </VirtualNetworkConfiguration>
+</NetworkConfiguration>

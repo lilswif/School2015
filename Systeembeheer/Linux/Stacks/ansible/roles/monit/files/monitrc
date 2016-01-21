@@ -1,0 +1,23 @@
+
+set alert daanvanhecke@hotmail.com
+set httpd port 2812
+use address 0.0.0.0
+allow 0.0.0.0/0.0.0.0
+allow admin:monit
+set daemon 120
+ 
+  check system $HOST
+    if loadavg (1min) > 4 then alert
+    if loadavg (5min) > 2 then alert
+    if cpu usage > 95% for 10 cycles then alert
+    if memory usage > 15% then alert
+    if swap usage > 25% then alert
+
+  check network public with interface eth0
+    if failed link then alert
+    if changed link then alert
+    if saturation > 90% then alert
+    if download > 10 MB/s then alert
+    if total upload > 1 GB in last hour then alert
+
+include /etc/monit.d/*
